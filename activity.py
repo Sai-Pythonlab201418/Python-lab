@@ -1,11 +1,13 @@
-class Circle:
-    def __init__(self, radius):
-        self.radius = radius
-        self.pi = 3.14159
-    def self_area(self):
-        return self.pi * (self.radius ** 2)
-    def self_perimeter(self):
-        return 2 * self.pi * self.radius
-my_circle = Circle(5)
-print("Area: %s" % my_circle.self_area())
-print("Perimeter: %s" % my_circle.self_perimeter())
+class Vehicle:
+    def __init__(self, name, mileage, capacity):
+        self.name = name
+        self.mileage = mileage
+        self.capacity = capacity
+    def fare(self):
+        return self.capacity * 100
+class Bus(Vehicle):
+    def fare(self):
+        base_fare = super().fare()
+        return base_fare + (base_fare * 0.1)
+School_bus = Bus("School Volvo", 12, 50)
+print("Total Bus fare is:", School_bus.fare())
