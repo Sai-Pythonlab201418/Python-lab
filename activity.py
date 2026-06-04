@@ -1,13 +1,26 @@
-class Vehicle:
-    def __init__(self, name, mileage, capacity):
-        self.name = name
-        self.mileage = mileage
-        self.capacity = capacity
-    def fare(self):
-        return self.capacity * 100
-class Bus(Vehicle):
-    def fare(self):
-        base_fare = super().fare()
-        return base_fare + (base_fare * 0.1)
-School_bus = Bus("School Volvo", 12, 50)
-print("Total Bus fare is:", School_bus.fare())
+from abc import ABC, abstractmethod
+class Vehicle(ABC):
+    @abstractmethod
+    def fuel_type(self):
+        pass
+    @abstractmethod
+    def max_speed(self):
+        pass
+class BMW(Vehicle):
+    def fuel_type(self):
+        return "Diesel"
+    def max_speed(self):
+        return "240 km/h"
+class Ferrari(Vehicle):
+    def fuel_type(self):
+        return "Petrol"
+    def max_speed(self):
+        return "350 km/h"
+def car_details(car):
+    print("Fuel: {}".format(car.fuel_type()))
+    print("Max Speed: {}".format(car.max_speed()))
+bmw_car = BMW()
+ferrari_car = Ferrari()
+print(" Vehicle Details")
+for car in (bmw_car, ferrari_car):
+    car_details(car)
