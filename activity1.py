@@ -1,9 +1,13 @@
-class myClass:
-    __privateVar = 27;
-    def __privMeth(self):
-        print("I am inside class myClass")
-    def hello(self):
-        print("Private Variable Value :",myClass.__privateVar)
-foo = myClass ()
-foo.hello()
-foo.__privMeth
+from abc import ABC, abstractmethod
+class Absclass(ABC):
+    def print(self,x):
+        print("Passed value: ", x)
+    @abstractmethod
+    def task(self):
+        print("We are inside Absclas task")
+class test_class(Absclass):
+    def task(self):
+        print("We are inside test_class task")
+test_obj = test_class()
+test_obj.task()
+test_obj.print(100)
